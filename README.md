@@ -10,3 +10,10 @@
 
 #### Backend - 
 - Basic CRUD API for tasks management using nodejs and mongodb
+
+- #### Initial Setup
+- git clone REPO
+- git checkout backend
+- create a directory - backend and do all the work in this directory
+
+

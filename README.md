@@ -4,7 +4,7 @@
 
 ### Basic level:
 
-#### Fronend - (For Anant)
+### Fronend - (For Anant)
 - Implement a feature to add Tasks.
 - Implement a feature to set the due date for these tasks.
 
@@ -25,7 +25,7 @@
   - Push Branch to remote - `git push origin frontend`
 
 
-#### Backend - (For Anuj)
+### Backend - (For Anuj)
 - Basic CRUD API for tasks management using nodejs and mongodb
 
 - #### Initial Setup

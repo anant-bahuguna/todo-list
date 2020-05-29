@@ -4,7 +4,7 @@
 
 ### Basic level:
 
-### Fronend - (For Anant)
+### Frontend - (For Anant)
 - Implement a feature to add Tasks.
 - Implement a feature to set the due date for these tasks.
 

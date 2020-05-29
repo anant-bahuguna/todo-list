@@ -13,7 +13,7 @@
   
   - #### Below 2 steps have to be done everytime
   - Check if your local copy is up to date - `git fetch orign`
-  - If there are changes - `git pull origin/frontend`
+  - If there are changes - `git pull origin master`
   
   - Now you can work on your own branch
   - `git checkout frontend`
@@ -33,7 +33,7 @@
   
   - #### Below 2 steps have to be done everytime
   - Check if your local copy is up to date - `git fetch orign`
-  - If there are changes - `git pull origin/backend`
+  - If there are changes - `git pull origin master`
   
   - Now you can work on your own branch
   - `git checkout backend`

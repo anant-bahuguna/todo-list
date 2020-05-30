@@ -26,6 +26,7 @@
 
 
 ### Backend - (For Anuj)
+- SignUp and Login Route
 - Basic CRUD API for tasks management using nodejs and mongodb
 
 - #### Initial Setup

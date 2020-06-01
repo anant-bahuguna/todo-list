@@ -4,8 +4,12 @@ import { Home, LandingPage } from "./pages";
 import { TodoForm } from "./components/todo";
 import {Navbar, FooterMenu} from "./components/layout";
 
+import { Provider } from 'react-redux'
+import store from './store'
+
 function App() {
     return (
+        <Provider store={store}>
         <Router>
             {/* <div className="has-navbar-fixed-top"> */}
             {/* <LandingPage /> */}
@@ -15,6 +19,7 @@ function App() {
             <FooterMenu />
             {/* </div> */}
         </Router>
+        </Provider>
     );
 }
 

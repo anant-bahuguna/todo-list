@@ -4,19 +4,19 @@ import navbarLogo from "../../assets/images/navbar-logo.svg";
 export const Navbar = () => {
     return (
         <nav
-            class="navbar is-fixed-top has-background-light"
+            className="navbar is-fixed-top has-background-light"
             role="navigation"
             aria-label="main navigation"
             style={S.navbar}
         >
-            <div class="navbar-brand">
-                <a class="navbar-item" href="https://bulma.io">
+            <div className="navbar-brand">
+                <a className="navbar-item" href="https://bulma.io">
                     <img src={navbarLogo} width="112" height="28" />
                 </a>
 
                 <a
                     role="button"
-                    class="navbar-burger burger"
+                    className="navbar-burger burger"
                     aria-label="menu"
                     aria-expanded="false"
                     data-target="navbarBasicExample"
@@ -27,32 +27,32 @@ export const Navbar = () => {
                 </a>
             </div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item">Home</a>
+            <div id="navbarBasicExample" className="navbar-menu">
+                <div className="navbar-start">
+                    <a className="navbar-item">Home</a>
 
-                    <a class="navbar-item">Documentation</a>
+                    <a className="navbar-item">Documentation</a>
 
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">Filter</a>
+                    <div className="navbar-item has-dropdown is-hoverable">
+                        <a className="navbar-link">Filter</a>
 
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item">All</a>
-                            <a class="navbar-item">Complete</a>
-                            <a class="navbar-item">Incomplete</a>
-                            <hr class="navbar-divider" />
-                            <a class="navbar-item">Report an issue</a>
+                        <div className="navbar-dropdown">
+                            <a className="navbar-item">All</a>
+                            <a className="navbar-item">Complete</a>
+                            <a className="navbar-item">Incomplete</a>
+                            <hr className="navbar-divider" />
+                            <a className="navbar-item">Report an issue</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="button is-primary">
+                <div className="navbar-end">
+                    <div className="navbar-item">
+                        <div className="buttons">
+                            <a className="button is-primary">
                                 <strong>Sign up</strong>
                             </a>
-                            <a class="button is-light">Log in</a>
+                            <a className="button is-light">Log in</a>
                         </div>
                     </div>
                 </div>

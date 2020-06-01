@@ -7,7 +7,7 @@ export const FooterMenu = () => {
             <div className="level-item has-text-centered">
                 <div>
                     <p className="title" style={S.navBtn}>
-                    <Link to='/home' className='has-text-grey'><i class="fas fa-home"></i></Link>
+                    <Link to='/home' className='has-text-grey'><i className="fas fa-home"></i></Link>
                     </p>
                 </div>
             </div>

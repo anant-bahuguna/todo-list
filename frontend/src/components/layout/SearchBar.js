@@ -5,16 +5,16 @@ export const SearchBar = () => {
         <section>
             <div className="container">
             <div className="column is-one-third is-centered" style={S}>
-                <div class="field">
-                    <p class="control has-icons-right">
+                <div className="field">
+                    <p className="control has-icons-right">
                         <input
-                            class="input is-medium is-info"
+                            className="input is-medium is-info"
                             id="searchBar"
                             type="email"
                             placeholder="Search..."
                         />
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-search fa-flip-horizontal"></i>
+                        <span className="icon is-small is-right">
+                            <i className="fas fa-search fa-flip-horizontal"></i>
                         </span>
                     </p>
                 </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import navbarLogo from "../../assets/images/navbar-logo.svg";
 
 export const Navbar = () => {
@@ -29,7 +30,9 @@ export const Navbar = () => {
 
             <div id="navbarBasicExample" className="navbar-menu">
                 <div className="navbar-start">
-                    <a className="navbar-item">Home</a>
+                    <Link className="navbar-item" to="/home">
+                        Home
+                    </Link>
 
                     <a className="navbar-item">Documentation</a>
 

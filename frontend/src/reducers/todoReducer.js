@@ -1,4 +1,3 @@
-
 import {
     GET_TODOS,
     SET_CURRENT,
@@ -16,39 +15,44 @@ const initState = {
     todos: [
         {
             id: 1,
-            title: 'Complete backend - 1',
-            description: 'afknk knaksf kandk knad kad kad jka',
+            title: "Complete backend - 1",
+            description: "afknk knaksf kandk knad kad kad jka",
             status: 1,
-            dueDate: '3 June'
+            dueDate: "3 June",
+            label: 'personal'
         },
         {
             id: 2,
-            title: 'Complete backend - 2',
-            description: 'afknk knaksf kandk knad kad kad jka',
+            title: "Complete backend - 2",
+            description: "afknk knaksf kandk knad kad kad jka",
             status: 1,
-            dueDate: '3 June'
+            dueDate: "3 June",
+            label: 'personal'
         },
         {
             id: 3,
-            title: 'Complete backend - 3',
-            description: 'afknk knaksf kandk knad kad kad jka',
+            title: "Complete backend - 3",
+            description: "afknk knaksf kandk knad kad kad jka",
             status: 1,
-            dueDate: '3 June'
+            dueDate: "3 June",
+            label: 'work'
         },
         {
             id: 4,
-            title: 'Complete backend - 4',
-            description: 'afknk knaksf kandk knad kad kad jka',
+            title: "Complete backend - 4",
+            description: "afknk knaksf kandk knad kad kad jka",
             status: 1,
-            dueDate: '3 June'
+            dueDate: "3 June",
+            label: 'personal'
         },
         {
             id: 5,
-            title: 'Complete backend - 5',
-            description: 'afknk knaksf kandk knad kad kad jka',
+            title: "Complete backend - 5",
+            description: "afknk knaksf kandk knad kad kad jka",
             status: 1,
-            dueDate: '3 June'
-        }
+            dueDate: "3 June",
+            label: 'personal'
+        },
     ],
     current: null,
     loading: false,
@@ -70,7 +74,7 @@ export default (state = initState, action) => {
                 todos: [...state.todos, action.payload],
             };
         case DELETE_TODO:
-            console.log('delete',action)
+            console.log("delete", action);
             return {
                 ...state,
                 todos: state.todos.filter((todo) => todo.id !== action.payload),

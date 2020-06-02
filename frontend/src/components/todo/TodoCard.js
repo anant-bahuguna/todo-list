@@ -20,7 +20,7 @@ const TodoCard = ({
 }) => {
     const [activeState, setActiveState] = useState(false);
 
-    const { title, id, description } = todo;
+    const { title, id, description, label } = todo;
 
     const onDelete = () => {
         console.log("click delete");
@@ -49,7 +49,7 @@ const TodoCard = ({
                 <div className="content">
                     <p>{description}</p>
                     <span className="tag is-link is-normal is-light">
-                        Personal
+                        {label.charAt(0).toUpperCase() + label.slice(1)}
                     </span>{" "}
                     <span className="tag is-danger is-normal is-light">
                         <time dateTime="2016-1-1">1 June</time>

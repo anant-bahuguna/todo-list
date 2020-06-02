@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { TodoForm } from "./TodoForm";
+import TodoForm from "./TodoForm";
 
 const AddTodo = ({ isActive, setModalActive }) => {
     const [close, setClose] = useState(false)

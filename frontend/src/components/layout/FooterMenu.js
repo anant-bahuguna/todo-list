@@ -1,9 +1,10 @@
-import React,{ useState, useEffect } from "react";
-import {Link} from 'react-router-dom'
-import AddTodo from '../todo/AddTodo'
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Modal from "./Modal";
+import TodoForm from "../todo/TodoForm";
 
 export const FooterMenu = () => {
-    const [modalActive, setModalActive] = useState(false)
+    const [modalActive, setModalActive] = useState(false);
     useEffect(() => {
         if (modalActive) {
             document.documentElement.classList.add("is-clipped");
@@ -16,52 +17,72 @@ export const FooterMenu = () => {
     // }
     return (
         <>
-        {modalActive ? <AddTodo isActive={true} setModalActive={setModalActive}/> : null}
-        <nav className="level is-mobile has-background-light is-hidden-desktop" style={S}>
-            <div className="level-item has-text-centered">
-                <div>
-                    <p className="title" style={S.navBtn}>
-                    <Link to='/home' className='has-text-grey'><i className="fas fa-home fa-sm"></i></Link>
-                    </p>
+            {modalActive ? (
+                <Modal setModalActive={setModalActive}>
+                    <TodoForm />
+                </Modal>
+            ) : null}
+            <nav
+                className="level is-mobile has-background-light is-hidden-desktop"
+                style={S}
+            >
+                <div className="level-item has-text-centered">
+                    <div>
+                        <p className="title" style={S.navBtn}>
+                            <Link to="/home" className="has-text-grey">
+                                <i className="fas fa-home fa-sm"></i>
+                            </Link>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div className="level-item has-text-centered">
-                <div>
-                    <p className="title" style={S.navBtn}>
-                    <a href='#searchBar' className='has-text-grey'><i className="fas fa-search fa-sm"></i></a>
-                    </p>
+                <div className="level-item has-text-centered">
+                    <div>
+                        <p className="title" style={S.navBtn}>
+                            <a href="#searchBar" className="has-text-grey">
+                                <i className="fas fa-search fa-sm"></i>
+                            </a>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div className="level-item has-text-centered">
-                <div>
-                    <p className="title" style={S.navBtn}>
-                        <a><i className="fas fa-plus fa-sm has-text-grey" onClick={() => setModalActive(true)}></i></a>
-                    </p>
+                <div className="level-item has-text-centered">
+                    <div>
+                        <p className="title" style={S.navBtn}>
+                            <a>
+                                <i
+                                    className="fas fa-plus fa-sm has-text-grey"
+                                    onClick={() => setModalActive(true)}
+                                ></i>
+                            </a>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div className="level-item has-text-centered">
-                <div>
-                    <p className="title" style={S.navBtn}>
-                    <Link to='/add' className='has-text-grey'><i className="fas fa-filter fa-sm"></i></Link>
-                    </p>
+                <div className="level-item has-text-centered">
+                    <div>
+                        <p className="title" style={S.navBtn}>
+                            <Link to="/add" className="has-text-grey">
+                                <i className="fas fa-filter fa-sm"></i>
+                            </Link>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div className="level-item has-text-centered">
-                <div>
-                    <p className="title" style={S.navBtn}>
-                    <Link to='/profile' className='has-text-grey'><i className="fas fa-user-alt fa-sm"></i></Link>
-                    </p>
+                <div className="level-item has-text-centered">
+                    <div>
+                        <p className="title" style={S.navBtn}>
+                            <Link to="/profile" className="has-text-grey">
+                                <i className="fas fa-user-alt fa-sm"></i>
+                            </Link>
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
         </>
     );
 };
 
 const filterTodos = () => {
-    return <h1>Filter</h1>
-}
- 
+    return <h1>Filter</h1>;
+};
+
 const S = {
     width: "100%",
     height: "50px",

@@ -47,15 +47,17 @@ export const getTodos = () => async (dispatch) => {
 };
 
 // ADD todo
-export const addTodo = (todo) => {
+export const addTodo = (todo) => (dispatch) => {
+    console.log('add action')
     todo.id = uuidv4();
-    return { type: ADD_TODO, payload: todo };
+    dispatch({ type: ADD_TODO, payload: todo });
 };
 
 // Delete todo
 
-export const deleteTodo = (id) => {
-    return { type: DELETE_TODO, payload: id };
+export const deleteTodo = (id) => (dispatch) => {
+    console.log("delete action");
+    dispatch({ type: DELETE_TODO, payload: id });
 };
 
 // Set Current todo

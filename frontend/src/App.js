@@ -5,6 +5,7 @@ import { TodoForm } from "./components/todo";
 import {Navbar, FooterMenu} from "./components/layout";
 import ProfileCard from './components/user/ProfileCard'
 import AddTodo from './components/todo/AddTodo'
+import {TodoDelete} from './components/todo/TodoDelete'
 
 import { Provider } from 'react-redux'
 import store from './store'

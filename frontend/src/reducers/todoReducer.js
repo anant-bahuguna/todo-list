@@ -16,36 +16,36 @@ const initState = {
     todos: [
         {
             id: 1,
-            title: 'Complete backend',
-            body: 'afknk knaksf kandk knad kad kad jka',
+            title: 'Complete backend - 1',
+            description: 'afknk knaksf kandk knad kad kad jka',
             status: 1,
             dueDate: '3 June'
         },
         {
             id: 2,
-            title: 'Complete backend',
-            body: 'afknk knaksf kandk knad kad kad jka',
+            title: 'Complete backend - 2',
+            description: 'afknk knaksf kandk knad kad kad jka',
             status: 1,
             dueDate: '3 June'
         },
         {
             id: 3,
-            title: 'Complete backend',
-            body: 'afknk knaksf kandk knad kad kad jka',
+            title: 'Complete backend - 3',
+            description: 'afknk knaksf kandk knad kad kad jka',
             status: 1,
             dueDate: '3 June'
         },
         {
             id: 4,
-            title: 'Complete backend',
-            body: 'afknk knaksf kandk knad kad kad jka',
+            title: 'Complete backend - 4',
+            description: 'afknk knaksf kandk knad kad kad jka',
             status: 1,
             dueDate: '3 June'
         },
         {
             id: 5,
-            title: 'Complete backend',
-            body: 'afknk knaksf kandk knad kad kad jka',
+            title: 'Complete backend - 5',
+            description: 'afknk knaksf kandk knad kad kad jka',
             status: 1,
             dueDate: '3 June'
         }
@@ -70,6 +70,7 @@ export default (state = initState, action) => {
                 todos: [...state.todos, action.payload],
             };
         case DELETE_TODO:
+            console.log('delete',action)
             return {
                 ...state,
                 todos: state.todos.filter((todo) => todo.id !== action.payload),

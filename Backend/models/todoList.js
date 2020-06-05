@@ -1,10 +1,20 @@
 const mongoose = require('mongoose')
 
 const todoListSchema = new mongoose.Schema({
+    owner:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:'User'
+    },
     task:{
         type:String,
         trim:true,
         required:true
+    },
+    description:{
+        type:String,
+        trim:true,
+        default:""
     },
     dueDate:{
         type:Date,

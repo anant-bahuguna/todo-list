@@ -18,23 +18,23 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
         minlength:8
-    },
-    tokens:[{
-        token:{
-            type:String,
-            required:true
-        }
-    }]
+    }
 },{
     timestamps:true
+})
+
+userSchema.virtual('todos',{
+    ref:'User',
+    localField: 'owner',
+    foreignField:'_id'
 })
 
 userSchema.methods.generateAuthToken = async function(){
     const user = this
     const token = jwt.sign({_id:user._id.toString()},'atodolist123')
 
-    user.tokens = user.tokens.concat({token})
-    await user.save()
+    //user.tokens = user.tokens.concat({token})
+    //await user.save()
 
     return token
 }

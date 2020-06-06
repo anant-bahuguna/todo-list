@@ -31,13 +31,11 @@ export default (state = initState, action) => {
             }
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
-        const [token] = action.payload.tokens.slice(-1)
-        console.log('token', token.token) 
-        localStorage.setItem('token',token.token)   
+        console.log('token', action.payload) 
+        localStorage.setItem('token',action.payload)   
         return {
                 ...state,
-                token: token.token,
-                user: action.payload,
+                token: action.payload,
                 isAuthenticated: true,
                 loading: false,
         } 

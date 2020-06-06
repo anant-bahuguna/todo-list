@@ -41,12 +41,14 @@ export const register = (formData) => async (dispatch) => {
 
     try {
         console.log("formData", formData);
-        const res = await axios.post("/signUp", formData, config);
+        const res = await axios.post("/signup", formData, config);
+        console.log('res.data ',res.data)
 
-        dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+        dispatch({ type: REGISTER_SUCCESS, payload: res.data.token });
 
         loadUser();
     } catch (err) {
+        console.log(err)
         dispatch({ type: REGISTER_FAIL, payload: err });
     }
 };
@@ -64,7 +66,7 @@ export const login= (formData) => async (dispatch) => {
         console.log("formData", formData);
         const res = await axios.post("/users/login", formData, config);
 
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
 
         loadUser();
     } catch (err) {

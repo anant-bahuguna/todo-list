@@ -1,19 +1,17 @@
-
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import {loadUser} from '../../actions/authActions'
+import { loadUser } from "../../actions/authActions";
 
-export const DeleteMessage = (props,{loadUser}) => {
+export const DeleteMessage = (props, { loadUser }) => {
     useEffect(() => {
-        loadUser()
-    }, [])
+        loadUser();
+    }, []);
     const onCancel = () => {
-        props.history.push('/home')
-    }
+        props.history.push("/home");
+    };
     return (
         <div className="columns is-centered is-vcentered" style={S}>
             <div className="column is-one-third">
-
                 <div className="box">
                     <div className="field">
                         <label className="label">
@@ -28,9 +26,10 @@ export const DeleteMessage = (props,{loadUser}) => {
                             </button>
                         </div>
                         <div className="control">
-
-                            <button className="button is-link is-light" onClick={onCancel}>
-
+                            <button
+                                className="button is-link is-light"
+                                onClick={onCancel}
+                            >
                                 Cancel
                             </button>
                         </div>
@@ -41,9 +40,7 @@ export const DeleteMessage = (props,{loadUser}) => {
     );
 };
 
-
-export default connect(loadUser)(DeleteMessage)
-
+export default connect(loadUser)(DeleteMessage);
 
 const S = {
     margin: "1.5rem auto",

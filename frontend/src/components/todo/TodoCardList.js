@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 import TodoCard from "./TodoCard";
-import PropTypes from "prop-types";
-import { getTodos } from "../../actions/todoActions";
-import { SET_LOADING } from "../../actions/types";
 
-const TodoCardList = ({ todo: { todos, loading }, getTodos }) => {
+const TodoCardList = ({ filtered, todos, loading }) => {
     // useEffect(() => {
     //     getTodos();
     // }, []);
@@ -27,30 +23,46 @@ const TodoCardList = ({ todo: { todos, loading }, getTodos }) => {
         );
     }
 
+    if (!loading && todos.length === 0) {
+        return (
+            <h1 className="has-text-centered">
+                Wow you have completed all your tasks
+            </h1>
+        );
+    }
+
     return (
         <section>
             <div className="container">
                 <div className="columns is-multiline" style={S.card}>
-                    {todos.map((todo) => (
-                        <div className="column is-one-third" key={todo.id}>
-                            <TodoCard todo={todo} />
-                        </div>
-                    ))}
+                    {filtered !== null
+                        ? filtered.map((todo) => (
+                              <div
+                                  className="column is-one-third"
+                                  key={todo.id}
+                              >
+                                  <TodoCard todo={todo} />
+                              </div>
+                          ))
+                        : todos.map((todo) => (
+                              <div
+                                  className="column is-one-third"
+                                  key={todo.id}
+                              >
+                                  <TodoCard todo={todo} />
+                              </div>
+                          ))}
                 </div>
             </div>
         </section>
     );
 };
 
-TodoCardList.propTypes = {
-    todo: PropTypes.object.isRequired,
-};
+// TodoCardList.propTypes = {
+//     todo: PropTypes.object.isRequired,
+// };
 
-const mapStateToProps = (state) => ({
-    todo: state.todo,
-});
-
-export default connect(mapStateToProps, { getTodos })(TodoCardList);
+export default TodoCardList;
 
 const S = {
     loading: {

@@ -1,21 +1,18 @@
-const express = require('express')
-require('./db/mongoose')
+const express = require("express");
+const connectDB = require("./config/mongoose");
 
-const userRouter = require('./routes/user')
-const TodoListRouter = require('./routes/todoList')
+const userRouter = require("./routes/user");
+const TodoListRouter = require("./routes/todoList");
 
-const app = express()
-const port = process.env.PORT || 3000
+const app = express();
+const port = process.env.PORT || 5000;
 
-app.use(express.json())
-app.use(userRouter)
-app.use(TodoListRouter)
+connectDB();
 
+app.use(express.json({ extended: false }));
+app.use(userRouter);
+app.use(TodoListRouter);
 
-app.listen(port,()=>{
-    console.log('Server is running on port '+port)
-})
-
-
-
-
+app.listen(port, () => {
+    console.log("Server is running on port " + port);
+});

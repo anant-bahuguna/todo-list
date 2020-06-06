@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { addTodo, clearCurrent, updateTodo } from "../../actions/todoActions";
+import {loadUser} from '../../actions/authActions'
 
-const TodoForm = ({ current, addTodo, clearCurrent, updateTodo }) => {
+const TodoForm = ({ current, addTodo, clearCurrent, updateTodo, loadUser }) => {
+    useEffect(() => {
+        loadUser()
+    }, [])
     // useEffect(() => {
     //     if (current !== null) {
     //         setTodo(current);
@@ -48,11 +52,11 @@ const TodoForm = ({ current, addTodo, clearCurrent, updateTodo }) => {
         clearCurrent();
     };
     return (
-        <div className="columns" style={S}>
-            <div className="column">
+        <div className="columns is-centered" style={S}>
+            <div className="column is-one-third">
                 <div className="box">
                     <div className="field">
-                        <label className="label">Title</label>
+                        <label className="label">Task</label>
                         <div className="control">
                             <input
                                 className="input"
@@ -136,7 +140,7 @@ const mapStateToProps = (state) => ({
     current: state.todo.current,
 });
 
-export default connect(mapStateToProps, { addTodo, clearCurrent, updateTodo })(
+export default connect(mapStateToProps, { addTodo, clearCurrent, updateTodo, loadUser })(
     TodoForm
 );
 

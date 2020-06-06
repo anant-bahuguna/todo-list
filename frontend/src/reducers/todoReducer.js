@@ -13,46 +13,6 @@ import {
 
 const initState = {
     todos: [
-        {
-            id: 1,
-            title: "Complete backend - 1",
-            description: "afknk knaksf kandk knad kad kad jka",
-            status: 1,
-            dueDate: "3 June",
-            label: 'personal'
-        },
-        {
-            id: 2,
-            title: "Complete backend - 2",
-            description: "afknk knaksf kandk knad kad kad jka",
-            status: 1,
-            dueDate: "3 June",
-            label: 'personal'
-        },
-        {
-            id: 3,
-            title: "Complete backend - 3",
-            description: "afknk knaksf kandk knad kad kad jka",
-            status: 1,
-            dueDate: "3 June",
-            label: 'work'
-        },
-        {
-            id: 4,
-            title: "Complete backend - 4",
-            description: "afknk knaksf kandk knad kad kad jka",
-            status: 1,
-            dueDate: "3 June",
-            label: 'personal'
-        },
-        {
-            id: 5,
-            title: "Complete backend - 5",
-            description: "afknk knaksf kandk knad kad kad jka",
-            status: 1,
-            dueDate: "3 June",
-            label: 'personal'
-        },
     ],
     current: null,
     loading: false,
@@ -99,7 +59,7 @@ export default (state = initState, action) => {
                 ...state,
                 filtered: state.todos.filter((todo) => {
                     const regex = new RegExp(`${action.payload}`, "gi");
-                    return todo.title.match(regex) || todo.body.match(regex);
+                    return todo.title.match(regex) || todo.description.match(regex) || todo.label.match(regex) ;
                 }),
             };
         case CLEAR_FILTER:

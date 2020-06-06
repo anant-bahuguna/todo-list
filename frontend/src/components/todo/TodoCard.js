@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
     deleteTodo,
@@ -8,7 +8,7 @@ import {
 } from "../../actions/todoActions";
 
 import { TodoDelete } from "./TodoDelete";
-import TodoCardDropdown from './TodoCardDropdown'
+import TodoCardDropdown from "./TodoCardDropdown";
 
 const TodoCard = ({
     todo,
@@ -42,7 +42,7 @@ const TodoCard = ({
                     {/* <span className="icon">
                             <i className="fas fa-angle-down" aria-hidden="true" />
                             </span> */}
-                   <TodoCardDropdown todo={todo}/> 
+                    <TodoCardDropdown todo={todo} />
                 </div>
             </header>
             <div className="card-content">
@@ -54,22 +54,13 @@ const TodoCard = ({
                     <span className="tag is-danger is-normal is-light">
                         <time dateTime="2016-1-1">1 June</time>
                     </span>{" "}
-                    <span className="tag is-success is-normal is-light">
-                        Completed
-                    </span>
                 </div>
             </div>
-            {/* <footer className="card-footer">
-                    <a href="#" className="card-footer-item">
-                    Save
-                    </a>
-                    <a href="#" className="card-footer-item">
-                    Edit
-                    </a>
-                    <a href="#" className="card-footer-item">
-                    Delete
-                    </a>
-                </footer> */}
+            <footer className="card-footer">
+                <span className="tag is-success is-normal is-light card-footer-item">
+                    Completed
+                </span>
+            </footer>
         </div>
     );
 };
@@ -84,4 +75,3 @@ export default connect(mapStateToProps, {
     setCurrent,
     clearCurrent,
 })(TodoCard);
-

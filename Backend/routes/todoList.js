@@ -4,7 +4,14 @@ const User = require('../models/user')
 const auth = require('../middleware/auth')
 
 router.post('/todo',auth,async(req,res)=>{
-    const todo = new TodoList(req.body)
+    const { title, description, label, dueDate } = req.body
+    const todo = new TodoList({
+        title,
+        description,
+        label,
+        dueDate,
+        owner: req.user.id
+    })
     try{
         await todo.save()
         res.send(todo)

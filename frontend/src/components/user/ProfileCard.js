@@ -34,3 +34,4 @@ const ProfileCard = ({loadUser}) => {
 };
 
 export default connect(loadUser)(ProfileCard);
+

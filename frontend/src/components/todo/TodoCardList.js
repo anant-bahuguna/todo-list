@@ -23,6 +23,7 @@ const TodoCardList = ({ filtered, todos, loading }) => {
         );
     }
 
+
     if (!loading && todos.length === 0) {
         return (
             <h1 className="has-text-centered">
@@ -30,7 +31,6 @@ const TodoCardList = ({ filtered, todos, loading }) => {
             </h1>
         );
     }
-
     return (
         <section>
             <div className="container">

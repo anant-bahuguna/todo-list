@@ -30,7 +30,6 @@ const TodoCardDropdown = ({ todo }) => {
     };
 
 
-
     return (
             <div
                 className={"dropdown is-right " + (activeState && "is-active")}
@@ -87,6 +86,7 @@ const TodoCardDropdown = ({ todo }) => {
                 </div>
             </div>
     );
+
 };
 
 export default TodoCardDropdown;

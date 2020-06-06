@@ -96,12 +96,9 @@ const Navbar = ({ auth: { isAuthenticated, user} ,logout}) => {
                     <Link className="navbar-item" to="/home">
                         Home
                     </Link>
-
                     <a className="navbar-item">Search</a>
-
                     <div className="navbar-item has-dropdown is-hoverable">
                         <a className="navbar-link">Filter</a>
-
                         <div className="navbar-dropdown">
                             <a className="navbar-item">All</a>
                             <a className="navbar-item">Complete</a>
@@ -125,11 +122,11 @@ const Navbar = ({ auth: { isAuthenticated, user} ,logout}) => {
                         </div>
                     </div>
                 </div> */}
+
             </div>
         </nav>
     );
 };
-
 const mapStateToProps = (state) => ({
     auth: state.auth,
 });

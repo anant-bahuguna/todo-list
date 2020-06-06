@@ -17,6 +17,7 @@ if(localStorage.token) {
     setAuthToken(localStorage.token)
 }
 
+
 function App() {
     return (
         <Provider store={store}>

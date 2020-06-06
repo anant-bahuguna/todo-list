@@ -42,7 +42,9 @@ const TodoCard = ({
                     {/* <span className="icon">
                             <i className="fas fa-angle-down" aria-hidden="true" />
                             </span> */}
+
                     <TodoCardDropdown todo={todo} />
+
                 </div>
             </header>
             <div className="card-content">
@@ -61,6 +63,7 @@ const TodoCard = ({
                     Completed
                 </span>
             </footer>
+
         </div>
     );
 };
@@ -75,3 +78,4 @@ export default connect(mapStateToProps, {
     setCurrent,
     clearCurrent,
 })(TodoCard);
+

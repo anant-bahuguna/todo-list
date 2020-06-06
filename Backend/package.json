@@ -12,10 +12,12 @@
     "nodemon": "^2.0.4",
     "validator": "^13.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
+  },
   "scripts": {
     "start": "node index.js",
-    "server": "nodemon index.js"
+    "server": "env-cmd -f ./config/dev.env nodemon index.js"
   },
   "keywords": [],
   "author": "",

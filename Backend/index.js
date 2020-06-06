@@ -1,13 +1,11 @@
 const express = require("express");
-const connectDB = require("./config/mongoose");
+require("./config/mongoose");
 
 const userRouter = require("./routes/user");
 const TodoListRouter = require("./routes/todoList");
 
 const app = express();
-const port = process.env.PORT || 5000;
-
-connectDB();
+const port = process.env.PORT
 
 app.use(express.json({ extended: false }));
 app.use(userRouter);

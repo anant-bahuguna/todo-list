@@ -15,7 +15,7 @@ router.post('/signup', async(req,res)=>{
         //console.log(user.password)
         res.send({user, token})
     } catch(e){
-        res.status(401).send()
+        res.status(401).send(e)
     } 
 })
 
@@ -26,7 +26,7 @@ router.post('/users/login', async(req, res)=>{
         const token = await user.generateAuthToken()
         res.status(201).send({user, token})
     } catch(e){
-        //console.log(e)
+        console.log(e)
         res.send(e);
     }
 });
@@ -36,32 +36,28 @@ router.get("/users/profile", auth, async (req, res) => {
 });
 
 
-router.get('/users/logout',auth, async(req, res)=>{
-    try{
-        req.user.tokens = req.user.tokens.filter((token)=>{
-            return token.token !== req.token
-        })
-        await req.user.save()
-        res.send({message:'logged out'})
-    } catch(e){
-        res.status(500).send()
-    }
-})
+// router.get('/users/logout',auth, async(req, res)=>{
+//     try{
+//         req.user.tokens = req.user.tokens.filter((token)=>{
+//             return token.token !== req.token
+//         })
+//         await req.user.save()
+//         res.send({message:'logged out'})
+//     } catch(e){
+//         res.status(500).send(e)
+//     }
+// })
 
-router.get('/users/logoutAll',auth,async(req,res)=>{
-    try{
-        req.user.tokens = []
-        await req.user.save()
-        res.send({message:'All logged out'})
-    } catch(e){
-        res.status(500).send()
-    }
-});
+// router.get('/users/logoutAll',auth,async(req,res)=>{
+//     try{
+//         req.user.tokens = []
+//         await req.user.save()
+//         res.send({message:'All logged out'})
+//     } catch(e){
+//         res.status(500).send()
+//     }
+// });
 
-
-router.get('/users/profile', auth, async(req,res)=>{
-    res.send(req.user)
-})
 
 module.exports = router
 

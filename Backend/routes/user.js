@@ -1,10 +1,14 @@
-
-const router = require('express').Router()
-const User = require('../models/user')
-const auth = require('../middleware/auth')
+const router = require("express").Router();
+const User = require("../models/user");
+const auth = require("../middleware/auth");
 
 router.post('/signup', async(req,res)=>{
-    const user = new User(req.body)
+  const { name, email, password } = req.body;
+    const user = new User({
+      name,
+      email,
+      password,
+    })
     try{
         const token = await user.generateAuthToken()
         await user.save()
@@ -23,9 +27,14 @@ router.post('/users/login', async(req, res)=>{
         res.status(201).send({user, token})
     } catch(e){
         //console.log(e)
-        res.send(e)
+        res.send(e);
     }
-})
+});
+
+router.get("/users/profile", auth, async (req, res) => {
+    res.json(req.user);
+});
+
 
 router.get('/users/logout',auth, async(req, res)=>{
     try{
@@ -47,13 +56,12 @@ router.get('/users/logoutAll',auth,async(req,res)=>{
     } catch(e){
         res.status(500).send()
     }
-})
+});
+
 
 router.get('/users/profile', auth, async(req,res)=>{
     res.send(req.user)
 })
 
-
-
-
 module.exports = router
+

@@ -6,7 +6,7 @@ const todoListSchema = new mongoose.Schema({
         required:true,
         ref:'User'
     },
-    task:{
+    title:{
         type:String,
         trim:true,
         required:true
@@ -21,6 +21,11 @@ const todoListSchema = new mongoose.Schema({
     },
     status:{
         type:Number, //1:not started, 2: In progress, 3: completed
+    },
+    label:{
+        type:String,
+        trim:true,
+        required:true
     }
 },{
     timestamps:true

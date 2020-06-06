@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "axios": "^0.19.2",
         "bulma": "^0.8.2",
         "cra-template": "1.0.3",
         "react": "^16.13.1",
@@ -11,8 +12,8 @@
         "react-router-dom": "^5.2.0",
         "react-scripts": "3.4.1",
         "redux": "^4.0.5",
-        "redux-thunk": "^2.3.0",
-        "redux-devtools-extension": "^2.13.8"
+        "redux-devtools-extension": "^2.13.8",
+        "redux-thunk": "^2.3.0"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -34,5 +35,7 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    }
+    },
+    "proxy": "http://localhost:5000"
+
 }

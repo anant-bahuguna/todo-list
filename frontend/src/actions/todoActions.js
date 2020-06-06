@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-
+import axios from 'axios'
 import {
     ADD_TODO,
     GET_TODOS,
@@ -47,9 +47,19 @@ export const getTodos = () => async (dispatch) => {
 };
 
 // ADD todo
-export const addTodo = (todo) => (dispatch) => {
+export const addTodo = (todo) => async (dispatch) => {
     console.log('add action')
-    todo.id = uuidv4();
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    try {
+        const res = await axios.post('/todo',todo,config)
+    } catch (err) {
+        
+    }
     dispatch({ type: ADD_TODO, payload: todo });
 };
 

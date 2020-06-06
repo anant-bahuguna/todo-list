@@ -3,7 +3,7 @@ const TodoList = require('../models/todoList')
 const User = require('../models/user')
 const auth = require('../middleware/auth')
 
-router.post('/todo',auth,async(req,res)=>{
+router.post('/todo',auth,async(req,res)=>{ 
     const todo = new TodoList({
         ...req.body,
         owner:req.user._id

@@ -12,19 +12,22 @@ router.post('/todo',auth,async(req,res)=>{
         await todo.save()
         res.send(todo)
     } catch(e){
-        res.status(400).send()
+        res.status(400).send(e)
     }
 })
 
-// router.get('/todo',auth,async(req,res)=>{
-//     try{
-//         await req.user.populate('todos')
-//         res.send(req.user.todos.task)
+router.get('/todo',auth,async(req,res)=>{
+    try{
+        // await req.user.populate('todos')
+        // res.send(req.user.todos.task)
+        const todos = await TodoList.find({owner:req.user._id})
+        res.send(todos)
 
-//     }catch(e){
-//         res.status(404).send(e)
-//     }
-// })
+    }catch(e){
+        console.log(e)
+        res.status(404).send(e)
+    }
+})
 
 router.get('/todo/:id',auth,async(req,res)=>{
     var _id = req.params.id
@@ -46,9 +49,10 @@ router.patch('/todo/:id',auth,async(req, res)=>{
         if(!todo){
             return res.status(404).send()
         }
+        console.log(req.token)
         res.send(todo)
     } catch(e){
-        res.status(404).send()
+        res.status(404).send(e)
     }
 })
 
@@ -58,9 +62,10 @@ router.delete('/todo/:id',auth,async(req, res)=>{
         if(!todo){
             return res.status(404).send()
         }
+        console.log(req.token)
         res.send(todo)
     } catch(e){
-        res.status(404).send()
+        res.status(404).send(e)
     }
 })
 

@@ -49,7 +49,6 @@ router.patch('/todo/:id',auth,async(req, res)=>{
         if(!todo){
             return res.status(404).send()
         }
-        console.log(req.token)
         res.send(todo)
     } catch(e){
         res.status(404).send(e)
@@ -62,7 +61,6 @@ router.delete('/todo/:id',auth,async(req, res)=>{
         if(!todo){
             return res.status(404).send()
         }
-        console.log(req.token)
         res.send(todo)
     } catch(e){
         res.status(404).send(e)

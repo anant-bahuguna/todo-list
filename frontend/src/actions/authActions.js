@@ -15,12 +15,9 @@ import setAuthToken from "../utils/setAuthToken";
 
 // load user
 export const loadUser = () => async dispatch => {
-    console.log('loading user')
-        console.log('setting global token header ', localStorage.token)
         setAuthToken(localStorage.token);
     try {
         const res = await axios.get("/users/profile");
-        console.log('user loaded ',res.data)
 
         dispatch({ type: USER_LOADED, payload: res.data });
     } catch (err) {
@@ -38,9 +35,7 @@ export const register = (formData) => async (dispatch) => {
     };
 
     try {
-        console.log("formData", formData);
         const res = await axios.post("/signup", formData, config);
-        console.log('res.data ',res.data)
 
         dispatch({ type: REGISTER_SUCCESS, payload: res.data.token });
 
@@ -61,7 +56,6 @@ export const login= (formData) => async (dispatch) => {
     };
 
     try {
-        console.log("formData", formData);
         const res = await axios.post("/users/login", formData, config);
 
         dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });

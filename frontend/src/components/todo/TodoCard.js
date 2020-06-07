@@ -6,34 +6,14 @@ import {
     setCurrent,
     clearCurrent,
 } from "../../actions/todoActions";
-
-import { TodoDelete } from "./TodoDelete";
 import TodoCardDropdown from "./TodoCardDropdown";
 
 const TodoCard = ({
     todo,
-    current,
-    filtered,
-    deleteTodo,
-    setCurrent,
-    clearCurrent,
 }) => {
-    const [activeState, setActiveState] = useState(false);
 
     const { title, _id, dueDate, description, label, status } = todo;
 
-    // const onDelete = () => {
-    //     console.log("click delete");
-    //     deleteTodo(id);
-    //     clearCurrent();
-    // };
-
-    // const toggleState = () => {
-    //     setActiveState(!activeState);
-    // };
-    // const deactivate = () => {
-    //     setActiveState(false);
-    // };
     return (
         <div className="card">
             <header className="card-header has-background-warning">

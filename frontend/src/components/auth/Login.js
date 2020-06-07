@@ -13,7 +13,6 @@ const Login = ({ auth: {error, loading, isAuthenticated}, login, history, setAle
 
     useEffect(() => {
         if(isAuthenticated) {
-            console.log('login authenticated')
             history.push('/home')
         }
         // if (error === 'Invalid Credentials') {

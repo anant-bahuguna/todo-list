@@ -21,7 +21,6 @@ const Register = ({
 
     useEffect(() => {
         if (isAuthenticated) {
-            console.log("authenticated");
             history.push("/home");
         }
     }, [history, isAuthenticated]);

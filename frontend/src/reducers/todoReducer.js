@@ -24,7 +24,6 @@ const initState = {
 export default (state = initState, action) => {
     switch (action.type) {
         case GET_TODOS:
-            console.log("get todos", action.payload);
             return {
                 ...state,
                 todos: action.payload,
@@ -37,7 +36,6 @@ export default (state = initState, action) => {
                 loading: false,
             };
         case DELETE_TODO:
-            console.log("delete", action);
             return {
                 ...state,
                 todos: state.todos.filter(

@@ -18,11 +18,6 @@ import {
 export const getTodos = () => async (dispatch) => {
     try {
         const res = await axios.get("/todo");
-        console.log(
-            "getting todos with token ",
-            axios.defaults.headers.common["Authorization"]
-        );
-        console.log("get todos res data", res.data);
 
         dispatch({ type: GET_TODOS, payload: res.data });
     } catch (err) {
@@ -32,7 +27,6 @@ export const getTodos = () => async (dispatch) => {
 
 // ADD todo
 export const addTodo = (todo) => async (dispatch) => {
-    console.log("add action");
     const config = {
         headers: {
             "Content-Type": "application/json",
@@ -51,7 +45,6 @@ export const addTodo = (todo) => async (dispatch) => {
 // Delete todo
 
 export const deleteTodo = (id) => async (dispatch) => {
-    console.log("delete action");
     try {
         const res = await axios.delete(`/todo/${id}`);
         dispatch({ type: DELETE_TODO, payload: id });

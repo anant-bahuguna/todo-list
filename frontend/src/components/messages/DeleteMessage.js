@@ -9,7 +9,6 @@ export const DeleteMessage = ({
     clearCurrent,
 }) => {
     useEffect(() => {
-        console.log(location.deleteProps);
         if (location.deleteProps === undefined) {
             history.push("/home");
         }

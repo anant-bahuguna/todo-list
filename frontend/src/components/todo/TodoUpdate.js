@@ -18,7 +18,6 @@ const TodoUpdate = ({
 }) => {
     useEffect(() => {
         if (location.updateProps !== undefined) {
-            console.log(location.updateProps.todo)
             location.updateProps.todo.dueDate = location.updateProps.todo.dueDate.split('T')[0] 
             setTodo(location.updateProps.todo);
         } else {

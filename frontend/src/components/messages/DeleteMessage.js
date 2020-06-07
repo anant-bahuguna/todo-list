@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { loadUser } from "../../actions/authActions";
 
-export const DeleteMessage = (props, { loadUser }) => {
-    useEffect(() => {
-        loadUser();
-    }, []);
+export const DeleteMessage = (props) => {
     const onCancel = () => {
         props.history.push("/home");
     };
@@ -40,7 +36,7 @@ export const DeleteMessage = (props, { loadUser }) => {
     );
 };
 
-export default connect(loadUser)(DeleteMessage);
+export default connect()(DeleteMessage);
 
 const S = {
     margin: "1.5rem auto",

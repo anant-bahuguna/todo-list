@@ -1,27 +1,14 @@
-
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { TodoCardList, TodoFilter } from "../components/todo";
-import { SearchBar } from "../components/layout";
-import { getTodos } from "../actions/todoActions";
-import { loadUser } from "../actions/authActions";
 
-const Home = ({ todo: { todos, loading, filtered }, getTodos, loadUser }) => {
-    useEffect(() => {
-        loadUser();
-        //get todos
-    }, []);
+const Home = () => {
     return (
         <>
             <TodoFilter />
-            <TodoCardList todos={todos} loading={loading} filtered={filtered}/>;
+            <TodoCardList />;
         </>
     );
 };
 
-const mapStateToProps = (state) => ({
-    todo: state.todo,
-});
 
-export default connect(mapStateToProps, { getTodos, loadUser })(Home);
-
+export default Home

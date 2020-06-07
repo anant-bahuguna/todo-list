@@ -9,20 +9,21 @@ import {
     UPDATE_TODO,
     ADD_TODO,
     DELETE_TODO,
+    CLEAR_TODOS
 } from "../actions/types";
 
 const initState = {
-    todos: [
-    ],
+    todos: null,
     current: null,
-    loading: false,
+    loading: true,
     filtered: null,
+    error: null,
 };
 
 export default (state = initState, action) => {
     switch (action.type) {
         case GET_TODOS:
-            console.log("todos", action.payload);
+            console.log("get todos", action.payload);
             return {
                 ...state,
                 todos: action.payload,
@@ -32,13 +33,31 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 todos: [...state.todos, action.payload],
+                loading: false,
             };
         case DELETE_TODO:
             console.log("delete", action);
             return {
                 ...state,
                 todos: state.todos.filter((todo) => todo.id !== action.payload),
+                loading: false,
             };
+        case UPDATE_TODO:
+            return {
+                ...state,
+                todos: state.todos.map((todo) =>
+                    todo.id === action.payload.id ? action.payload : todo
+                ),
+                loading: false,
+            };
+        case CLEAR_TODOS:
+            return {
+                ...state,
+                todos: null,
+                filtered: null,
+                error: null,
+                current: null
+            }
         case SET_CURRENT:
             return {
                 ...state,
@@ -59,7 +78,11 @@ export default (state = initState, action) => {
                 ...state,
                 filtered: state.todos.filter((todo) => {
                     const regex = new RegExp(`${action.payload}`, "gi");
-                    return todo.title.match(regex) || todo.description.match(regex) || todo.label.match(regex) ;
+                    return (
+                        todo.title.match(regex) ||
+                        todo.description.match(regex) ||
+                        todo.label.match(regex)
+                    );
                 }),
             };
         case CLEAR_FILTER:
@@ -72,13 +95,6 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 error: action.payload,
-            };
-        case UPDATE_TODO:
-            return {
-                ...state,
-                todos: state.todos.map((todo) =>
-                    todo.id === action.payload.id ? action.payload : todo
-                ),
             };
         default:
             return state;

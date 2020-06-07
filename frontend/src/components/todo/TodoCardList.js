@@ -1,33 +1,22 @@
 import React, { useEffect } from "react";
 import TodoCard from "./TodoCard";
+import { connect } from "react-redux";
+import { getTodos } from "../../actions/todoActions";
+import { Spinner } from "../layout";
 
-const TodoCardList = ({ filtered, todos, loading }) => {
-    // useEffect(() => {
-    //     getTodos();
-    // }, []);
+const TodoCardList = ({ todo: { todos, loading, filtered }, getTodos }) => {
+    useEffect(() => {
+        getTodos();
+    }, []);
 
     if (loading || todos === null) {
-        return (
-            <section>
-                <div className="container">
-                    <div className="column is-one-third">
-                        <progress
-                            className="progress is-small is-info "
-                            max="100"
-                        >
-                            60%
-                        </progress>
-                    </div>
-                </div>
-            </section>
-        );
+        return <Spinner />;
     }
 
-
-    if (!loading && todos.length === 0) {
+    if (todos !== null && todos.length === 0 && !loading) {
         return (
             <h1 className="has-text-centered">
-                Wow you have completed all your tasks
+                Please add a task
             </h1>
         );
     }
@@ -39,7 +28,7 @@ const TodoCardList = ({ filtered, todos, loading }) => {
                         ? filtered.map((todo) => (
                               <div
                                   className="column is-one-third"
-                                  key={todo.id}
+                                  key={todo._id}
                               >
                                   <TodoCard todo={todo} />
                               </div>
@@ -47,7 +36,7 @@ const TodoCardList = ({ filtered, todos, loading }) => {
                         : todos.map((todo) => (
                               <div
                                   className="column is-one-third"
-                                  key={todo.id}
+                                  key={todo._id}
                               >
                                   <TodoCard todo={todo} />
                               </div>
@@ -62,7 +51,11 @@ const TodoCardList = ({ filtered, todos, loading }) => {
 //     todo: PropTypes.object.isRequired,
 // };
 
-export default TodoCardList;
+const mapStateToProps = (state) => ({
+    todo: state.todo,
+});
+
+export default connect(mapStateToProps, { getTodos })(TodoCardList);
 
 const S = {
     loading: {

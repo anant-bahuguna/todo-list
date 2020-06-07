@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import {useHistory, Link} from 'react-router-dom'
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
+import {setAlert} from '../../actions/alertActions'
 
-const Login = ({ auth: {loading, isAuthenticated}, login, history }) => {
+const Login = ({ auth: {error, loading, isAuthenticated}, login, history, setAlert }) => {
     const [loadingBtn, setLoadingBtn] = useState("");
     const [user, setUser] = useState({
         email: "",
@@ -15,7 +16,11 @@ const Login = ({ auth: {loading, isAuthenticated}, login, history }) => {
             console.log('login authenticated')
             history.push('/home')
         }
-    },[history, isAuthenticated])
+        // if (error === 'Invalid Credentials') {
+        //     setAlert(error, 'danger');
+        //     clearErrors();
+        //   }
+    },[error, history, isAuthenticated])
 
     // const history = useHistory();
 
@@ -27,27 +32,16 @@ const Login = ({ auth: {loading, isAuthenticated}, login, history }) => {
     const onSubmit = (e) => {
         // check validation
         e.preventDefault();
-        console.log(loading)
-        if (loading) {
-            setLoadingBtn("is-loading");
-        }
-        if (validate()) {
+        if (email === '' || password === '') {
+            setAlert('Please fill in all fields', 'danger');
+          } else {
             login({
-                email,
-                password,
+              email,
+              password
             });
-        } else {
-            console.log("validation failed");
-            setLoadingBtn("");
-        }
+          }
 
         // history.push("/home");
-    };
-
-    const validate = () => {
-        if (email && password) return true;
-
-        return false;
     };
 
     const clearAll = () => {
@@ -122,7 +116,7 @@ const mapStateToProps = (state) => ({
     auth: state.auth,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { setAlert, login })(Login);
 
 const S = {
     margin: "1.5rem auto",

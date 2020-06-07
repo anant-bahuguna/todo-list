@@ -1,11 +1,7 @@
 import React,{ useEffect } from "react";
 import { connect } from "react-redux";
-import {loadUser} from '../../actions/authActions'
 
-const ProfileCard = ({loadUser}) => {
-    useEffect(() => {
-        loadUser()
-    }, [])
+const ProfileCard = ({}) => {
     return (
         <div class="card">
             <div class="card-content">
@@ -33,5 +29,5 @@ const ProfileCard = ({loadUser}) => {
     );
 };
 
-export default connect(loadUser)(ProfileCard);
+export default connect()(ProfileCard);
 

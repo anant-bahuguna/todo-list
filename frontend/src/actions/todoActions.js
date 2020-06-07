@@ -1,10 +1,10 @@
-import { v4 as uuidv4 } from "uuid";
 import axios from 'axios'
 import {
     ADD_TODO,
     GET_TODOS,
     UPDATE_TODO,
     DELETE_TODO,
+    CLEAR_TODOS,
     SET_CURRENT,
     CLEAR_CURRENT,
     SET_LOADING,
@@ -13,36 +13,18 @@ import {
     CLEAR_FILTER,
 } from "./types";
 
-// Async call needed so uses thunk
-// export const getTodos = () => {
-//     return async (dispatch, getState) => {
-//         setLoading();
-//         const res = await fetch('https://jsonplaceholder.typicode.com/todos')
-//         const data = await res.json()
-
-//         dispatch({
-//             type: GET_TODOS,
-//             payload: data
-//         })
-//     }
-// }
-
-// Get todos from server
+// Get todos 
 export const getTodos = () => async (dispatch) => {
-    try {
-        setLoading();
-        const res = await fetch("https://jsonplaceholder.typicode.com/todos");
-        const data = await res.json();
+    
 
-        dispatch({
-            type: GET_TODOS,
-            payload: data,
-        });
+    try {
+        const res = await axios.get('/todo')
+        console.log('getting todos with token ', axios.defaults.headers.common["Authorization"])
+        console.log('get todos res data', res.data)
+
+        dispatch({ type: GET_TODOS, payload: res.data });
     } catch (err) {
-        dispatch({
-            type: TODOS_ERROR,
-            payload: err,
-        });
+        dispatch({type: TODOS_ERROR, payload: err})
     }
 };
 
@@ -57,10 +39,12 @@ export const addTodo = (todo) => async (dispatch) => {
 
     try {
         const res = await axios.post('/todo',todo,config)
+
+        dispatch({ type: ADD_TODO, payload: res.data });
     } catch (err) {
-        
+        dispatch({type: TODOS_ERROR, payload: err})
     }
-    dispatch({ type: ADD_TODO, payload: todo });
+    
 };
 
 // Delete todo
@@ -69,6 +53,11 @@ export const deleteTodo = (id) => (dispatch) => {
     console.log("delete action");
     dispatch({ type: DELETE_TODO, payload: id });
 };
+
+// Clear Todos
+export const clearTodos = () => dispatch => {
+    dispatch({ type: CLEAR_TODOS });
+  };
 
 // Set Current todo
 export const setCurrent = (todo) => {

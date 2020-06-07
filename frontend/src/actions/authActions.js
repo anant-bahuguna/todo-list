@@ -16,10 +16,8 @@ import setAuthToken from "../utils/setAuthToken";
 // load user
 export const loadUser = () => async dispatch => {
     console.log('loading user')
-    if (localStorage.token) {
-        console.log('setting global token header')
+        console.log('setting global token header ', localStorage.token)
         setAuthToken(localStorage.token);
-    }
     try {
         const res = await axios.get("/users/profile");
         console.log('user loaded ',res.data)

@@ -1,12 +1,17 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import navbarLogo from "../../assets/images/navbar-logo.svg";
-import { logout } from "../../actions/authActions";
+import { loadUser, logout } from "../../actions/authActions";
+import { clearTodos } from "../../actions/todoActions";
 
-const Navbar = ({ auth: { isAuthenticated, user} ,logout}) => {
+const Navbar = ({ auth: { isAuthenticated, user }, loadUser, clearTodos, logout, location }) => {
+    useEffect(() => {
+        loadUser();
+      }, [isAuthenticated]);
     const onLogout = () => {
         logout();
+        clearTodos()
     };
     const authLinks = (
         <Fragment>
@@ -15,7 +20,9 @@ const Navbar = ({ auth: { isAuthenticated, user} ,logout}) => {
                     Home
                 </Link>
 
-                <NavLink to='/task' className="navbar-item">New Task</NavLink>
+                <NavLink to="/task" className="navbar-item">
+                    New Task
+                </NavLink>
 
                 <div className="navbar-item has-dropdown is-hoverable">
                     <a className="navbar-link">Filter</a>
@@ -33,11 +40,7 @@ const Navbar = ({ auth: { isAuthenticated, user} ,logout}) => {
             <div className="navbar-end">
                 <div className="navbar-item">
                     <div className="buttons">
-                        <a
-                            className=""
-                            style={{ color: `${S.brandColor}` }}
-                            
-                        >
+                        <a className="" style={{ color: `${S.brandColor}` }}>
                             <strong>Hi {user && user.name} </strong>
                         </a>
                         <a className="button is-light" onClick={onLogout}>
@@ -53,13 +56,16 @@ const Navbar = ({ auth: { isAuthenticated, user} ,logout}) => {
             <div className="navbar-end">
                 <div className="navbar-item">
                     <div className="buttons">
-                        <Link to='/register'
+                        <Link
+                            to="/register"
                             className="button is-primary"
                             style={{ backgroundColor: `${S.brandColor}` }}
                         >
                             <strong>Sign up</strong>
                         </Link>
-                        <Link to='/login' className="button is-light">Log in</Link>
+                        <Link to="/login" className="button is-light">
+                            Log in
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -92,37 +98,6 @@ const Navbar = ({ auth: { isAuthenticated, user} ,logout}) => {
 
             <div id="navbarBasicExample" className="navbar-menu">
                 {isAuthenticated ? authLinks : guestLinks}
-                {/* <div className="navbar-start">
-                    <Link className="navbar-item" to="/home">
-                        Home
-                    </Link>
-                    <a className="navbar-item">Search</a>
-                    <div className="navbar-item has-dropdown is-hoverable">
-                        <a className="navbar-link">Filter</a>
-                        <div className="navbar-dropdown">
-                            <a className="navbar-item">All</a>
-                            <a className="navbar-item">Complete</a>
-                            <a className="navbar-item">Incomplete</a>
-                            <hr className="navbar-divider" />
-                            <a className="navbar-item">Report an issue</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="navbar-end">
-                    <div className="navbar-item">
-                        <div className="buttons">
-                            <a
-                                className="button is-primary"
-                                style={{ backgroundColor: `${S.brandColor}` }}
-                            >
-                                <strong>Sign up</strong>
-                            </a>
-                            <a className="button is-light">Log in</a>
-                        </div>
-                    </div>
-                </div> */}
-
             </div>
         </nav>
     );
@@ -131,7 +106,7 @@ const mapStateToProps = (state) => ({
     auth: state.auth,
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { loadUser, clearTodos, logout })(Navbar);
 
 const S = {
     navbar: {

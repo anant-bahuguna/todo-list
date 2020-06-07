@@ -52,7 +52,7 @@ const Login = ({ auth: {error, loading, isAuthenticated}, login, history, setAle
     };
     return (
         <div className="columns is-centered" style={S}>
-            <div className="column is-one-third">
+            <div className="column is-three-quarters">
                 <div className="box">
                 <p className="title has-text-centered">
                         Account <span style={{color: `${S.brandColor}`}}>Login</span>

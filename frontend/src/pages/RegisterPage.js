@@ -1,9 +1,9 @@
 import React from "react";
 import logo from "../assets/images/todos-logo.svg";
+import Login from '../components/auth/Login'
 import Register from '../components/auth/Register'
 
-
-export const LandingPage = () => {
+export const RegisterPage = () => {
     return (
         <section className="hero is-fullheight has-background-grey-lighter">
             <div className="hero-body">

@@ -34,25 +34,7 @@ const Register = ({
     };
 
     const onSubmit = (e) => {
-        // check validation
         e.preventDefault();
-        // if (validate()) {
-        //     // if (loading) {
-        //     //     setLoadingBtn("is-loading");
-        //     // } else {
-        //     //     setLoadingBtn("");
-        //     // }
-        //     register({
-        //         name,
-        //         email,
-        //         password,
-        //     });
-
-        //     clearAll();
-        // } else {
-        //     console.log("validation failed");
-        //     setLoadingBtn("");
-        // }
         if (name === "" || email === "" || password === "") {
             setAlert("Please enter all fields", "danger");
         } else if (password !== password2) {
@@ -78,7 +60,7 @@ const Register = ({
     };
     return (
         <div className="columns is-centered" style={S}>
-            <div className="column is-one-third">
+            <div className="column is-three-quarters">
                 <Alerts />
                 <div className="box">
                     <p className="title has-text-centered">

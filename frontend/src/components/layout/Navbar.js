@@ -83,7 +83,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, loadUser, clearTodos, logout 
                     <img src={navbarLogo} width="112" height="28" />
                 </a>
 
-                <a
+                {/* <a
                     role="button"
                     className="navbar-burger burger"
                     aria-label="menu"
@@ -93,7 +93,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, loadUser, clearTodos, logout 
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
-                </a>
+                </a> */}
             </div>
 
             <div id="navbarBasicExample" className="navbar-menu">

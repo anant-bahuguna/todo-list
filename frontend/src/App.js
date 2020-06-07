@@ -28,6 +28,7 @@ function App() {
                 <PrivateRoute component={TodoForm} path="/task" exact />
                 <PrivateRoute component={DeleteMessage} path="/delete" exact />
                 <PrivateRoute component={ProfileCard} path="/profile" exact />
+                <Route component={Login} path="/" exact />
                 {/* </Route> */}
                 <FooterMenu />
                 {/* </div> */}

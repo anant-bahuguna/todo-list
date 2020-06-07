@@ -20,7 +20,7 @@ router.get('/todo',auth,async(req,res)=>{
     try{
         // await req.user.populate('todos')
         // res.send(req.user.todos.task)
-        const todos = await TodoList.find({owner:req.user._id})
+        const todos = await TodoList.find({owner:req.user._id}).sort({ createdAt: -1 })
         res.send(todos)
 
     }catch(e){

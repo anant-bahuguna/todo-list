@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {
-    deleteTodo,
-    setCurrent,
-    clearCurrent,
-} from "../../actions/todoActions";
+
 
 const TodoCardDropdown = ({ todo }) => {
     const { title, id, body } = todo;
@@ -29,64 +25,66 @@ const TodoCardDropdown = ({ todo }) => {
         setActiveState(false);
     };
 
-
     return (
-            <div
-                className={"dropdown is-right " + (activeState && "is-active")}
-                tabIndex="0"
-            >
-                <div className="dropdown-trigger">
-                    <button
-                        className="button is-small"
-                        aria-haspopup="true"
-                        aria-controls="dropdown-menu"
-                        onClick={toggleState}
-                        // onBlur={deactivate}
+        <div
+            className={"dropdown is-right " + (activeState && "is-active")}
+            tabIndex="0"
+        >
+            <div className="dropdown-trigger">
+                <button
+                    className="button is-small"
+                    aria-haspopup="true"
+                    aria-controls="dropdown-menu"
+                    onClick={toggleState}
+                    // onBlur={deactivate}
+                >
+                    <span className="icon is-small">
+                        <i className="fas fa-angle-down" aria-hidden="true" />
+                    </span>
+                </button>
+            </div>
+            <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                <div className="dropdown-content">
+                    <Link
+                        to={{
+                            pathname: "/task/edit",
+                            updateProps: {
+                                todo: todo,
+                            },
+                        }}
+                        href="#"
+                        className="dropdown-item"
                     >
-                        <span className="icon is-small">
+                        <span className="panel-icon">
                             <i
-                                className="fas fa-angle-down"
+                                className="fas fa-pencil-alt"
                                 aria-hidden="true"
                             />
                         </span>
-                    </button>
-                </div>
-                <div
-                    className="dropdown-menu"
-                    id="dropdown-menu"
-                    role="menu"
-                    
-                >
-                    <div className="dropdown-content">
-                        <Link to='/task'
-                            href="#"
-                            className="dropdown-item"
-                        >
-                            <span className="panel-icon">
-                                <i
-                                    className="fas fa-pencil-alt"
-                                    aria-hidden="true"
-                                />
-                            </span>
-                            Edit Task
-                        </Link>
-                        <Link to={'/delete/' + todo.id}
-                            href="#"
-                            className="dropdown-item"
-                        >
-                            <span className="panel-icon">
-                                <i
-                                    className="fas fa-trash-alt"
-                                    aria-hidden="true"
-                                />
-                            </span>
-                            Delete Task
-                        </Link>
-                    </div>
+                        Edit Task
+                    </Link>
+                    <Link
+                        to={{
+                            pathname: "/delete",
+                            deleteProps: {
+                                id: todo._id,
+                            },
+                        }}
+                        href="#"
+                        className="dropdown-item"
+                    >
+                        <span className="panel-icon">
+                            <i
+                                className="fas fa-trash-alt"
+                                aria-hidden="true"
+                            />
+                        </span>
+                        Delete Task
+                    </Link>
                 </div>
             </div>
+        </div>
     );
-
 };
 
 export default TodoCardDropdown;

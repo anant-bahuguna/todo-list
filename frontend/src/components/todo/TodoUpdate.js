@@ -3,10 +3,40 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import {
     addTodo,
+    setCurrent,
+    clearCurrent,
+    updateTodo,
 } from "../../actions/todoActions";
 
-const TodoForm = ({ addTodo }) => {
-    const history = useHistory();
+const TodoUpdate = ({
+    history,
+    location,
+    current,
+    addTodo,
+    clearCurrent,
+    updateTodo,
+}) => {
+    useEffect(() => {
+        if (location.updateProps !== undefined) {
+            console.log(location.updateProps.todo)
+            location.updateProps.todo.dueDate = location.updateProps.todo.dueDate.split('T')[0] 
+            setTodo(location.updateProps.todo);
+        } else {
+            history.push('/home');
+        }
+    }, []);
+    // useEffect(() => {
+    //     if (current !== null) {
+    //         setTodo(current);
+    //     } else {
+    //         setTodo({
+    //             title: "",
+    //             dueDate: "",
+    //             description: "",
+    //             label: "personal",
+    //         });
+    //     }
+    // }, [current]);
     const [loadingBtn, setLoadingBtn] = useState("");
 
     const [todo, setTodo] = useState({
@@ -14,7 +44,6 @@ const TodoForm = ({ addTodo }) => {
         dueDate: "",
         description: "",
         label: "personal",
-        status: "Not Started"
     });
 
     const { title, dueDate, description, label } = todo;
@@ -25,7 +54,12 @@ const TodoForm = ({ addTodo }) => {
     const onSubmit = (e) => {
         setLoadingBtn("is-loading");
         e.preventDefault();
-        addTodo(todo);
+        // if (current === null) {
+        //     addTodo(todo);
+        // } else {
+            updateTodo(todo);
+        // }
+        
 
         clearAll();
     };
@@ -100,7 +134,7 @@ const TodoForm = ({ addTodo }) => {
                                 className={"button is-link " + loadingBtn}
                                 onClick={onSubmit}
                             >
-                                Add Task
+                                Update Task
                             </button>
                         </div>
                         <div className="control">
@@ -118,11 +152,16 @@ const TodoForm = ({ addTodo }) => {
     );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+    current: state.todo.current,
+});
 
 export default connect(mapStateToProps, {
     addTodo,
-})(TodoForm);
+    setCurrent,
+    clearCurrent,
+    updateTodo,
+})(TodoUpdate);
 
 const S = {
     margin: "1.5rem auto",

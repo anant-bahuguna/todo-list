@@ -20,20 +20,20 @@ const TodoCard = ({
 }) => {
     const [activeState, setActiveState] = useState(false);
 
-    const { title, id, description, label } = todo;
+    const { title, _id, dueDate, description, label, status } = todo;
 
-    const onDelete = () => {
-        console.log("click delete");
-        deleteTodo(id);
-        clearCurrent();
-    };
+    // const onDelete = () => {
+    //     console.log("click delete");
+    //     deleteTodo(id);
+    //     clearCurrent();
+    // };
 
-    const toggleState = () => {
-        setActiveState(!activeState);
-    };
-    const deactivate = () => {
-        setActiveState(false);
-    };
+    // const toggleState = () => {
+    //     setActiveState(!activeState);
+    // };
+    // const deactivate = () => {
+    //     setActiveState(false);
+    // };
     return (
         <div className="card">
             <header className="card-header has-background-warning">
@@ -44,26 +44,37 @@ const TodoCard = ({
                             </span> */}
 
                     <TodoCardDropdown todo={todo} />
-
                 </div>
             </header>
             <div className="card-content">
                 <div className="content">
                     <p>{description}</p>
-                    <span className="tag is-link is-normal is-light">
-                        {label.charAt(0).toUpperCase() + label.slice(1)}
-                    </span>{" "}
+                    {label !== "Select Label" && (
+                        <span className="tag is-link is-normal is-light">
+                            {label.charAt(0).toUpperCase() + label.slice(1)}
+                        </span>
+                    )}{" "}
                     <span className="tag is-danger is-normal is-light">
-                        <time dateTime="2016-1-1">1 June</time>
+                        <time dateTime="2016-1-1">{dueDate.split('T')[0]}</time>
                     </span>{" "}
                 </div>
             </div>
-            <footer className="card-footer">
-                <span className="tag is-success is-normal is-light card-footer-item">
+            <Link
+                to={{
+                    pathname: "/task/status",
+                    statusProps: {
+                        status: status,
+                        id: _id
+                    },
+                }}
+            >
+                <footer className="card-footer">
+                    <TodoStatus status={status}> {status} </TodoStatus>
+                    {/* <span className="tag is-success is-normal is-light card-footer-item">
                     Completed
-                </span>
-            </footer>
-
+                </span> */}
+                </footer>
+            </Link>
         </div>
     );
 };
@@ -79,3 +90,26 @@ export default connect(mapStateToProps, {
     clearCurrent,
 })(TodoCard);
 
+const TodoStatus = ({status, children}) => {
+    switch (status) {
+        case "In Progress": //In progress
+            return (
+                <span className="tag is-info is-normal is-light card-footer-item">
+                   📝 {children}
+                </span>
+            );
+        case "Completed": //Completed
+            return (
+                <span className="tag is-success is-normal is-light card-footer-item">
+                    ✔️ {children}
+                </span>
+            );
+        case "Not Started": //Not started
+        default:
+            return (
+                <span className="tag is-danger is-normal is-light card-footer-item">
+                    ❌ {children || "Not Started"}
+                </span>
+            );
+    }
+};

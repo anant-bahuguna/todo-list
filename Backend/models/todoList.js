@@ -20,7 +20,8 @@ const todoListSchema = new mongoose.Schema({
         type:Date,
     },
     status:{
-        type:Number, //1:not started, 2: In progress, 3: completed
+        type:String,
+        default: "Not Started" //1:not started, 2: In progress, 3: completed
     },
     label:{
         type:String,

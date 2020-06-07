@@ -2,6 +2,7 @@ import {
     GET_TODOS,
     SET_CURRENT,
     CLEAR_CURRENT,
+    UPDATE_STATUS,
     SET_LOADING,
     TODOS_ERROR,
     FILTER_TODOS,
@@ -9,7 +10,7 @@ import {
     UPDATE_TODO,
     ADD_TODO,
     DELETE_TODO,
-    CLEAR_TODOS
+    CLEAR_TODOS,
 } from "../actions/types";
 
 const initState = {
@@ -32,21 +33,23 @@ export default (state = initState, action) => {
         case ADD_TODO:
             return {
                 ...state,
-                todos: [...state.todos, action.payload],
+                todos: [action.payload, ...state.todos],
                 loading: false,
             };
         case DELETE_TODO:
             console.log("delete", action);
             return {
                 ...state,
-                todos: state.todos.filter((todo) => todo.id !== action.payload),
+                todos: state.todos.filter(
+                    (todo) => todo._id !== action.payload
+                ),
                 loading: false,
             };
         case UPDATE_TODO:
             return {
                 ...state,
                 todos: state.todos.map((todo) =>
-                    todo.id === action.payload.id ? action.payload : todo
+                    todo._id === action.payload._id ? action.payload : todo
                 ),
                 loading: false,
             };
@@ -56,8 +59,8 @@ export default (state = initState, action) => {
                 todos: null,
                 filtered: null,
                 error: null,
-                current: null
-            }
+                current: null,
+            };
         case SET_CURRENT:
             return {
                 ...state,
@@ -81,7 +84,8 @@ export default (state = initState, action) => {
                     return (
                         todo.title.match(regex) ||
                         todo.description.match(regex) ||
-                        todo.label.match(regex)
+                        todo.label.match(regex) ||
+                        todo.status.match(regex)
                     );
                 }),
             };

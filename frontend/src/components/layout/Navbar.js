@@ -5,7 +5,7 @@ import navbarLogo from "../../assets/images/navbar-logo.svg";
 import { loadUser, logout } from "../../actions/authActions";
 import { clearTodos } from "../../actions/todoActions";
 
-const Navbar = ({ auth: { isAuthenticated, user }, loadUser, clearTodos, logout, location }) => {
+const Navbar = ({ auth: { isAuthenticated, user }, loadUser, clearTodos, logout }) => {
     useEffect(() => {
         loadUser();
       }, [isAuthenticated]);
@@ -40,9 +40,9 @@ const Navbar = ({ auth: { isAuthenticated, user }, loadUser, clearTodos, logout,
             <div className="navbar-end">
                 <div className="navbar-item">
                     <div className="buttons">
-                        <a className="" style={{ color: `${S.brandColor}` }}>
+                        <NavLink to='/profile' className="" style={{ color: `${S.brandColor}` }}>
                             <strong>Hi {user && user.name} </strong>
-                        </a>
+                        </NavLink>
                         <a className="button is-light" onClick={onLogout}>
                             <i className="fas fa-sign-out-alt"></i>Log out
                         </a>

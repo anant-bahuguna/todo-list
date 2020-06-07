@@ -1,33 +1,52 @@
-import React,{ useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { Spinner } from "../layout";
 
-const ProfileCard = ({}) => {
-    return (
-        <div class="card">
-            <div class="card-content">
-                <div class="media is-clipped">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                            <i className="fas fa-user-alt fa-xl"></i>
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">John Smith</p>
-                        <p class="subtitle is-6">@johnsmith</p>
-                    </div>
-                </div>
+const ProfileCard = ({ user }) => {
+    if (user) {
+        const { name, email, createdAt } = user;
+        return (
+            <div className="columns is-centered" style={S}>
+                <div className="column is-one-third">
+                    <br/>
+                    <br/>
+                    <div className="card">
+                        <div className="card-content">
+                            <div className="media is-clipped">
+                                <div className="media-left">
+                                    <figure className="image is-48x48">
+                                        <i className="fas fa-user-alt fa-3x"></i>
+                                    </figure>
+                                </div>
+                                <div className="media-content is-clipped">
+                                    <p className="title is-4">{name}</p>
+                                    <p className="subtitle is-6">{email}</p>
+                                </div>
+                            </div>
 
-                <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                    <a href="#">#css</a> <a href="#">#responsive</a>
-                    <br />
-                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                            <div className="content">
+                                <a>Sign out</a>
+                                <br />
+                                <b>Joined on</b> -{" "}
+                                <time dateTime={createdAt.split('T')[0]}>{createdAt.split('T')[0]}</time>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
+
+    return <Spinner />;
 };
 
-export default connect()(ProfileCard);
+const mapStateToProps = (state) => ({
+    user: state.auth.user,
+});
 
+export default connect(mapStateToProps)(ProfileCard);
+
+
+const S = {
+    margin: "1.5rem auto",
+}

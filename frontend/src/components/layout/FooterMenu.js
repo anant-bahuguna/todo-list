@@ -21,7 +21,7 @@ export const FooterMenu = () => {
                     </p>
                 </div>
             </div>
-            <div className="level-item has-text-centered">
+            {/* <div className="level-item has-text-centered">
                 <div>
                     <p className="title" style={S.navBtn}>
                         <a
@@ -33,7 +33,7 @@ export const FooterMenu = () => {
                         </a>
                     </p>
                 </div>
-            </div>
+            </div> */}
             <div className="level-item has-text-centered">
                 <div>
                     <p className="title" style={S.navBtn}>
@@ -47,7 +47,7 @@ export const FooterMenu = () => {
                     </p>
                 </div>
             </div>
-            <div className="level-item has-text-centered">
+            {/* <div className="level-item has-text-centered">
                 <div>
                     <p className="title" style={S.navBtn}>
                         <NavLink
@@ -59,7 +59,7 @@ export const FooterMenu = () => {
                         </NavLink>
                     </p>
                 </div>
-            </div>
+            </div> */}
             <div className="level-item has-text-centered">
                 <div>
                     <p className="title" style={S.navBtn}>

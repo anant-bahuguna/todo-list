@@ -1,8 +1,14 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Spinner } from "../layout";
+import { logout } from "../../actions/authActions";
+import { clearTodos } from "../../actions/todoActions";
 
-const ProfileCard = ({ user }) => {
+const ProfileCard = ({ user, logout, clearTodos }) => {
+    const onLogout = () => {
+        logout();
+        clearTodos()
+    };
     if (user) {
         const { name, email, createdAt } = user;
         return (
@@ -25,7 +31,7 @@ const ProfileCard = ({ user }) => {
                             </div>
 
                             <div className="content">
-                                <a>Sign out</a>
+                                <a onClick={onLogout}>Sign out</a>
                                 <br />
                                 <b>Joined on</b> -{" "}
                                 <time dateTime={createdAt.split('T')[0]}>{createdAt.split('T')[0]}</time>
@@ -44,7 +50,7 @@ const mapStateToProps = (state) => ({
     user: state.auth.user,
 });
 
-export default connect(mapStateToProps)(ProfileCard);
+export default connect(mapStateToProps,{logout, clearTodos})(ProfileCard);
 
 
 const S = {

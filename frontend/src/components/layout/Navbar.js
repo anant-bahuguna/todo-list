@@ -24,7 +24,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, loadUser, clearTodos, logout 
                     New Task
                 </NavLink>
 
-                <div className="navbar-item has-dropdown is-hoverable">
+                {/* <div className="navbar-item has-dropdown is-hoverable">
                     <a className="navbar-link">Filter</a>
 
                     <div className="navbar-dropdown">
@@ -34,7 +34,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, loadUser, clearTodos, logout 
                         <hr className="navbar-divider" />
                         <a className="navbar-item">Report an issue</a>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <div className="navbar-end">

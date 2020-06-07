@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { updateStatus } from "../../actions/todoActions";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-const UpdateStatus = ({ location, history, updateStatus }) => {
+const UpdateStatus = ({ location, updateStatus }) => {
+    const history = useHistory();
     useEffect(() => {
         if (location.statusProps !== undefined) {
             setStatus(location.statusProps.status);

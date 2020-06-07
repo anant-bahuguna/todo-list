@@ -3,13 +3,12 @@ import { useHistory, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { register } from "../../actions/authActions";
 import { setAlert } from "../../actions/alertActions";
-import Alerts from '../layout/Alerts'
+import Alerts from "../layout/Alerts";
 
 const Register = ({
     auth: { loading, isAuthenticated },
     register,
     setAlert,
-    history,
 }) => {
     const [loadingBtn, setLoadingBtn] = useState("");
     const [user, setUser] = useState({
@@ -18,6 +17,8 @@ const Register = ({
         password: "",
         password2: "",
     });
+
+    const history = useHistory();
 
     useEffect(() => {
         if (isAuthenticated) {

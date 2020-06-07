@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { deleteTodo, clearCurrent } from "../../actions/todoActions";
+import { useHistory } from "react-router-dom";
 
-export const DeleteMessage = ({
-    history,
-    location,
-    deleteTodo,
-    clearCurrent,
-}) => {
+export const DeleteMessage = ({ location, deleteTodo, clearCurrent }) => {
+    const history = useHistory();
     useEffect(() => {
         if (location.deleteProps === undefined) {
             history.push("/home");
@@ -18,7 +15,7 @@ export const DeleteMessage = ({
         const onDelete = () => {
             deleteTodo(id);
             clearCurrent();
-            history.goBack()
+            history.goBack();
         };
         const onCancel = () => {
             // props.history.push("/home");
@@ -57,7 +54,7 @@ export const DeleteMessage = ({
             </div>
         );
     }
-    return <h1>Loading...</h1>
+    return <h1>Loading...</h1>;
 };
 
 const mapStateToProps = (state) => ({});

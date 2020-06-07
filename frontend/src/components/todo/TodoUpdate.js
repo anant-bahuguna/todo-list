@@ -9,19 +9,21 @@ import {
 } from "../../actions/todoActions";
 
 const TodoUpdate = ({
-    history,
     location,
     current,
     addTodo,
     clearCurrent,
     updateTodo,
 }) => {
+    const history = useHistory();
     useEffect(() => {
         if (location.updateProps !== undefined) {
-            location.updateProps.todo.dueDate = location.updateProps.todo.dueDate.split('T')[0] 
+            location.updateProps.todo.dueDate = location.updateProps.todo.dueDate.split(
+                "T"
+            )[0];
             setTodo(location.updateProps.todo);
         } else {
-            history.push('/home');
+            history.push("/home");
         }
     }, []);
     // useEffect(() => {
@@ -56,9 +58,8 @@ const TodoUpdate = ({
         // if (current === null) {
         //     addTodo(todo);
         // } else {
-            updateTodo(todo);
+        updateTodo(todo);
         // }
-        
 
         clearAll();
     };

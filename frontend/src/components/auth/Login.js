@@ -4,12 +4,14 @@ import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
 import {setAlert} from '../../actions/alertActions'
 
-const Login = ({ auth: {error, loading, isAuthenticated}, login, history, setAlert }) => {
+const Login = ({ auth: {error, loading, isAuthenticated}, login, setAlert }) => {
     const [loadingBtn, setLoadingBtn] = useState("");
     const [user, setUser] = useState({
         email: "",
         password: "",
     });
+
+    const history = useHistory()
 
     useEffect(() => {
         if(isAuthenticated) {

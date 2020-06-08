@@ -3,7 +3,7 @@
 <img src='frontend/src/assets/images/todos-logo.svg' width="50%" />
 
 
-### Instructions -
+### Instructions to run locally-
 
 1. Inside config folder, create a file dev.env and paste the following - 
     ```

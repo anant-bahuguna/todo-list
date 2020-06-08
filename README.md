@@ -25,3 +25,11 @@
    -  ```npm start```
 
 6. The project would be running on http://localhost:3000
+
+
+## Core Team - 
+
+  <img src="https://avatars3.githubusercontent.com/u/43554447?s=460&u=c47f0e594a1c82d0dda17780921e65d4785a8154&v=4" width="100px"/>   <img src="https://avatars2.githubusercontent.com/u/55762439?s=460&u=ca54ee4104c0e8d881ba6f2be5c795a87488792a&v=4" width="100px" />
+
+   [Anant Bahuguna](https://github.com/anant-bahuguna)   [Anuj Agrawal](https://github.com/anuj-agrawal-0705)
+    
